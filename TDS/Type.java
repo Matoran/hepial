@@ -5,4 +5,9 @@ package TDS;
  */
 public abstract class Type {
     public abstract boolean estConforme(Type other);
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
 }

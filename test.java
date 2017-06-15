@@ -3,8 +3,8 @@ import java.util.Vector;
 import java.io.FileReader;
 public class test {
 	public static void main (String[] arg){
-		try { 
-			FileReader myFile = new FileReader(arg[0]);
+        try {
+            FileReader myFile = new FileReader(arg[0]);
 			Lexer myLex = new Lexer(myFile);
 			parser myP = new parser(myLex);
 			try {myP.parse();}

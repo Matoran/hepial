@@ -7,18 +7,27 @@
 */
 
 import java_cup.runtime.*;
-import java.util.Vector;
+import java.util.*;
 import java.io.*;
+import TDS.*;
+
 
 
 parser code {:
+    private Lexer lexer = (Lexer)getScanner();
+    private TDS tds = TDS.getInstance();
+    private Type dernierType;
+    private int ligne = 0;
 :}
 
 //--------------------Terminaux----------------------------------------
 //mot clef
 terminal DEBUT_PRG, FIN_PRG, PROGRAMME, DEBUT_FONC, FIN_FONC, RETOURNE;
 //type
-terminal CONSTANTE, ENTIER, BOOLEEN, VRAI, FAUX, IDENT, CONSTANTE_CHAINE, CONSTANTE_ENT;
+terminal TypeEntier ENTIER;
+terminal TypeBoolean BOOLEEN;
+terminal String IDENT, CONSTANTE_CHAINE;
+terminal CONSTANTE, VRAI, FAUX, CONSTANTE_ENT;
 //operateur
 terminal PARENTHESE_OUVRANTE, PARENTHESE_FERMANTE, VIRGULE, EGAL, POINT_VIRGULE, CROCHET_OUVRANT, CROCHET_FERMANT, POINT_POINT, PLUS, MOINS, FOIS, DIVISER, EGAL_EGAL, DIFFERENT, PLUS_PETIT, PLUS_PETIT_OU_EGAL, PLUS_GRAND, PLUS_GRAND_OU_EGAL, ET, OU, TILDE, NON;
 //IO
@@ -43,13 +52,33 @@ programme ::= entete declas DEBUT_PRG corps FIN_PRG;
 entete ::= PROGRAMME IDENT;
 declas ::= decla declas | decla;
 decla ::= decla_var | decla_const | decla_fonc;
-decla_var ::= type lident POINT_VIRGULE;
-lident ::= IDENT | lident VIRGULE IDENT;
+decla_var ::= type lident:identifiants POINT_VIRGULE
+{:
+	for (String identifiant : ((ArrayList<String>) identifiants)) {  
+        Entree e = new EntreeEntBool(new Ident(identifiant));  
+        Symbole s = new SymboleEntBool(ligne, dernierType);
+        tds.ajouter(e, s);
+    }
+	System.out.println(tds);
+:};
+lident ::= IDENT:identifiant
+{:
+	ligne = lexer.getLine();
+    ArrayList<String> identifiants = new ArrayList<String>();
+    identifiants.add(identifiant);	
+	RESULT = identifiants;
+
+:}
+| lident:identifiants VIRGULE IDENT:identifiant
+{:
+	((ArrayList<String>) identifiants).add(identifiant);	
+	RESULT = identifiants;
+:};
 decla_const ::= CONSTANTE type IDENT EGAL expr POINT_VIRGULE;
 decla_fonc ::= type IDENT PARENTHESE_OUVRANTE param PARENTHESE_FERMANTE decla DEBUT_FONC corps FIN_FONC 
              | type IDENT PARENTHESE_OUVRANTE PARENTHESE_FERMANTE decla DEBUT_FONC corps FIN_FONC;
 type ::= type_base | tableau;
-type_base ::= ENTIER | BOOLEEN;
+type_base ::= ENTIER {: dernierType = TypeEntier.getInstance(); :} | BOOLEEN  {: dernierType = TypeBooleen.getInstance(); :};
 tableau ::= type_base CROCHET_OUVRANT dim CROCHET_FERMANT;
 dim ::= expr POINT_POINT expr | dim VIRGULE expr POINT_POINT expr;
 param ::= type IDENT | param VIRGULE type IDENT;

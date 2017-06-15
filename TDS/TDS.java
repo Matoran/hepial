@@ -43,4 +43,10 @@ public class TDS {
         return dico.get(e);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        dico.forEach((e, s) -> sb.append(e).append(" ").append(s).append("\n"));
+        return sb.toString();
+    }
 }
