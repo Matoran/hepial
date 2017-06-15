@@ -1,0 +1,81 @@
+/*
+    Cyril ISELI, Marco RODRIGUES
+    
+    Janvier 2017
+
+    GRAMMAIRE HEPIAL
+*/
+
+import java_cup.runtime.*;
+import java.util.Vector;
+import java.io.*;
+
+
+parser code {:
+:}
+
+//--------------------Terminaux----------------------------------------
+//mot clef
+terminal DEBUT_PRG, FIN_PRG, PROGRAMME, DEBUT_FONC, FIN_FONC, RETOURNE;
+//type
+terminal CONSTANTE, ENTIER, BOOLEEN, VRAI, FAUX, IDENT, CONSTANTE_CHAINE, CONSTANTE_ENT;
+//operateur
+terminal PARENTHESE_OUVRANTE, PARENTHESE_FERMANTE, VIRGULE, EGAL, POINT_VIRGULE, CROCHET_OUVRANT, CROCHET_FERMANT, POINT_POINT, PLUS, MOINS, FOIS, DIVISER, EGAL_EGAL, DIFFERENT, PLUS_PETIT, PLUS_PETIT_OU_EGAL, PLUS_GRAND, PLUS_GRAND_OU_EGAL, ET, OU, TILDE, NON;
+//IO
+terminal LIRE, ECRIRE;
+//condition
+terminal SI, ALORS, SINON, FIN_SI;
+//boucle
+terminal TANT_QUE, FAIRE, FIN_TANT_QUE, POUR, ALLANT_DE, A, FIN_POUR;
+
+//--------------------Non Terminaux------------------------------------
+non terminal axiome, programme, entete, decla, decla_var, lident, decla_const, decla_fonc, type, type_base, tableau, dim, param, corps, instr, lire, ecrire, affectation, retour, condition, tant_que, pour, expr, acces, index, operande, ope_bin, ope_un, appel_fct, par_eff, instrTemp, indexTemp, declas;
+
+
+//--------------------Precedences--------------------------------------
+precedence left PLUS, MOINS, FOIS, DIVISER, EGAL_EGAL, DIFFERENT, PLUS_PETIT, PLUS_PETIT_OU_EGAL, PLUS_GRAND, PLUS_GRAND_OU_EGAL, ET, OU, POINT_POINT;
+precedence right TILDE, NON;
+
+
+//-------------------Regles de grammaire--------------------------------
+axiome ::= programme;
+programme ::= entete declas DEBUT_PRG corps FIN_PRG;
+entete ::= PROGRAMME IDENT;
+declas ::= decla declas | decla;
+decla ::= decla_var | decla_const | decla_fonc;
+decla_var ::= type lident POINT_VIRGULE;
+lident ::= IDENT | lident VIRGULE IDENT;
+decla_const ::= CONSTANTE type IDENT EGAL expr POINT_VIRGULE;
+decla_fonc ::= type IDENT PARENTHESE_OUVRANTE param PARENTHESE_FERMANTE decla DEBUT_FONC corps FIN_FONC 
+             | type IDENT PARENTHESE_OUVRANTE PARENTHESE_FERMANTE decla DEBUT_FONC corps FIN_FONC;
+type ::= type_base | tableau;
+type_base ::= ENTIER | BOOLEEN;
+tableau ::= type_base CROCHET_OUVRANT dim CROCHET_FERMANT;
+dim ::= expr POINT_POINT expr | dim VIRGULE expr POINT_POINT expr;
+param ::= type IDENT | param VIRGULE type IDENT;
+corps ::= instrTemp;
+instrTemp ::= instr instrTemp;
+instrTemp ::= {: :};
+instr ::= affectation | ecrire | lire | condition | retour | tant_que | pour;
+lire ::= LIRE IDENT POINT_VIRGULE;
+ecrire ::= ECRIRE expr POINT_VIRGULE | ECRIRE CONSTANTE_CHAINE POINT_VIRGULE;
+affectation ::= acces EGAL expr POINT_VIRGULE;
+retour ::= RETOURNE expr POINT_VIRGULE;
+condition ::= SI expr ALORS corps SINON corps FIN_SI;
+tant_que ::= TANT_QUE expr FAIRE corps FIN_TANT_QUE;
+pour ::= POUR IDENT ALLANT_DE expr A expr FAIRE corps FIN_POUR;
+expr ::= expr ope_bin expr | ope_un expr | PARENTHESE_OUVRANTE expr PARENTHESE_FERMANTE | operande;
+acces ::= IDENT | IDENT indexTemp;
+indexTemp ::= index indexTemp;
+index ::= CROCHET_OUVRANT expr CROCHET_FERMANT;
+operande ::= acces | appel_fct | CONSTANTE_ENT | VRAI | FAUX;
+ope_bin ::= PLUS | MOINS | FOIS | DIVISER | EGAL_EGAL | DIFFERENT | OU | ET | PLUS_PETIT | PLUS_PETIT_OU_EGAL | PLUS_GRAND | PLUS_GRAND_OU_EGAL;
+ope_un ::= TILDE | NON;
+appel_fct ::= IDENT PARENTHESE_OUVRANTE PARENTHESE_FERMANTE | IDENT PARENTHESE_OUVRANTE par_eff PARENTHESE_FERMANTE;
+par_eff ::= expr | par_eff VIRGULE expr;
+
+
+
+
+
+
