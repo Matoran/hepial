@@ -20,7 +20,7 @@ import java.util.Vector;
 %{
 
     public int getLine(){
-        return yyline;
+        return yyline+1;
     }
 
     public void yyerror() {
@@ -85,7 +85,7 @@ ou   	    { /*System.out.println("sym.OU");*/ return new Symbol(sym.OU) ; }
 \~  	        { /*System.out.println("sym.TILDE");*/ return new Symbol(sym.TILDE) ; }
 non   	    { /*System.out.println("sym.NON");*/ return new Symbol(sym.NON) ; }
 [a-zA-Z][a-zA-Z0-9]* { /*System.out.println("sym.IDENT " + yytext());*/ return new Symbol(sym.IDENT, yytext()) ; }
-[0-9]+ { /*System.out.println("sym.CONSTANTE_ENT " + yytext());*/ return new Symbol(sym.CONSTANTE_ENT, yytext()) ; }
+[0-9]+ { /*System.out.println("sym.CONSTANTE_ENT " + yytext());*/ return new Symbol(sym.CONSTANTE_ENT, Integer.valueOf(yytext())) ; }
 \".*\" { /*System.out.println("sym.CONSTANTE_CHAINE " + yytext());*/ return new Symbol(sym.CONSTANTE_CHAINE, yytext()) ; }
 
 /* -------------------------------------------------
