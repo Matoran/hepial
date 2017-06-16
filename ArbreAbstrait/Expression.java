@@ -3,9 +3,10 @@ package ArbreAbstrait;
 /**
  * Created by cyril on 6/16/17.
  */
-public class Expression extends ArbreAbstrait{
+public abstract class Expression extends ArbreAbstrait {
+    private int ligne;
 
-    public Expression(){
-
+    public Expression(int lig) {
+        ligne = lig;
     }
 }

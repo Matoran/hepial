@@ -10,6 +10,7 @@ import java_cup.runtime.*;
 import java.util.*;
 import java.io.*;
 import TDS.*;
+import ArbreAbstrait.*;
 
 
 
@@ -18,6 +19,7 @@ parser code {:
     private TDS tds = TDS.getInstance();
     private Type dernierType;
     private int ligne = 0;
+    private Stack<ArbreAbstrait> pileArbres = new Stack<ArbreAbstrait>();
 :}
 
 //--------------------Terminaux----------------------------------------
@@ -39,8 +41,9 @@ terminal SI, ALORS, SINON, FIN_SI;
 terminal TANT_QUE, FAIRE, FIN_TANT_QUE, POUR, ALLANT_DE, A, FIN_POUR;
 
 //--------------------Non Terminaux------------------------------------
-non terminal axiome, programme, entete, decla, decla_var, decla_const, decla_fonc, decla_fonc_debut, decla_fonc_fin, type, type_base, tableau, dim, param, corps, instr, lire, ecrire, affectation, retour, condition, tant_que, pour, expr, acces, index, operande, ope_bin, ope_un, appel_fct, par_eff, instrTemp, indexTemp, declas;
+non terminal axiome, programme, entete, decla, decla_var, decla_const, decla_fonc, decla_fonc_debut, decla_fonc_fin, type, type_base, tableau, dim, param, corps, instr, lire, ecrire, affectation, retour, condition, tant_que, pour, expr, acces, index, operande, ope_un, appel_fct, par_eff, instrTemp, indexTemp, declas;
 non terminal ArrayList<String> lident;
+non terminal String ope_bin;
 
 //--------------------Precedences--------------------------------------
 precedence left PLUS, MOINS, FOIS, DIVISER, EGAL_EGAL, DIFFERENT, PLUS_PETIT, PLUS_PETIT_OU_EGAL, PLUS_GRAND, PLUS_GRAND_OU_EGAL, ET, OU, POINT_POINT;
@@ -55,6 +58,7 @@ programme ::= entete declas DEBUT_PRG corps FIN_PRG
 :};
 entete ::= PROGRAMME IDENT
 {:
+    pileArbres.push(new Bloc());
     tds.entreeBloc();
 :};
 declas ::= decla declas | decla;
@@ -84,6 +88,7 @@ decla_fonc ::=  decla_fonc_debut param decla_fonc_fin
               | decla_fonc_debut decla_fonc_fin;
 decla_fonc_debut ::= type IDENT:identifiant PARENTHESE_OUVRANTE
 {:
+        pileArbres.push(new Bloc());
         ligne = lexer.getLine();
         tds.entreeBloc();
         Entree e = new EntreeFonction(new Ident(identifiant));
@@ -108,17 +113,74 @@ instrTemp ::= {: :};
 instr ::= affectation | ecrire | lire | condition | retour | tant_que | pour;
 lire ::= LIRE IDENT POINT_VIRGULE;
 ecrire ::= ECRIRE expr POINT_VIRGULE | ECRIRE CONSTANTE_CHAINE POINT_VIRGULE;
-affectation ::= acces EGAL expr POINT_VIRGULE;
+affectation ::= acces EGAL expr POINT_VIRGULE
+{:
+Expression source = (Expression) (pileArbres.pop());
+Idf dest = (Idf)(pileArbres.pop());
+pileArbres.push(new Affectation(dest, source));
+:};
 retour ::= RETOURNE expr POINT_VIRGULE;
 condition ::= SI expr ALORS corps SINON corps FIN_SI;
 tant_que ::= TANT_QUE expr FAIRE corps FIN_TANT_QUE;
 pour ::= POUR IDENT ALLANT_DE expr A expr FAIRE corps FIN_POUR;
-expr ::= expr ope_bin expr | ope_un expr | PARENTHESE_OUVRANTE expr PARENTHESE_FERMANTE | operande;
-acces ::= IDENT | IDENT indexTemp;
+expr ::= expr ope_bin:operateur expr
+{:
+    Expression d = (Expression)pileArbres.pop();
+    Expression g = (Expression)pileArbres.pop();
+    switch (operateur) {
+        case "+":
+            pileArbres.push(new Addition(g, d, ligne));
+            break;
+        case "-":
+            pileArbres.push(new Soustraction(g, d, ligne));
+            break;
+        case "*":
+            pileArbres.push(new Produit(g, d, ligne));
+            break;
+        case "/":
+            pileArbres.push(new Division(g, d, ligne));
+            break;
+        case "==":
+            pileArbres.push(new Egal(g, d, ligne));
+            break;
+        case "<>":
+            pileArbres.push(new Different(g, d, ligne));
+            break;
+        case "<=":
+            pileArbres.push(new InfEgal(g, d, ligne));
+            break;
+        case ">=":
+            pileArbres.push(new SupEgal(g, d, ligne));
+            break;
+        case "<":
+            pileArbres.push(new Inferieur(g, d, ligne));
+            break;
+        case ">":
+            pileArbres.push(new Superieur(g, d, ligne));
+            break;
+    }
+:}
+| ope_un expr | PARENTHESE_OUVRANTE expr PARENTHESE_FERMANTE | operande;
+acces ::= IDENT:identifiant
+{:
+    pileArbres.push(new Idf(identifiant, ligne));
+:}
+ | IDENT indexTemp;
 indexTemp ::= index indexTemp;
 index ::= CROCHET_OUVRANT expr CROCHET_FERMANT;
 operande ::= acces | appel_fct | CONSTANTE_ENT | VRAI | FAUX;
-ope_bin ::= PLUS | MOINS | FOIS | DIVISER | EGAL_EGAL | DIFFERENT | OU | ET | PLUS_PETIT | PLUS_PETIT_OU_EGAL | PLUS_GRAND | PLUS_GRAND_OU_EGAL;
+ope_bin ::= PLUS {: RESULT = "+"; :}
+            | MOINS {: RESULT = "-"; :}
+            | FOIS {: RESULT = "*"; :}
+            | DIVISER {: RESULT = "/"; :}
+            | EGAL_EGAL {: RESULT = "=="; :}
+            | DIFFERENT {: RESULT = "<>"; :}
+            | OU {: RESULT = "ou"; :}
+            | ET {: RESULT = "et"; :}
+            | PLUS_PETIT {: RESULT = "<"; :}
+            | PLUS_PETIT_OU_EGAL {: RESULT = "<="; :}
+            | PLUS_GRAND {: RESULT = ">"; :}
+            | PLUS_GRAND_OU_EGAL {: RESULT = ">="; :};
 ope_un ::= TILDE | NON;
 appel_fct ::= IDENT PARENTHESE_OUVRANTE PARENTHESE_FERMANTE | IDENT PARENTHESE_OUVRANTE par_eff PARENTHESE_FERMANTE;
 par_eff ::= expr | par_eff VIRGULE expr;

@@ -6,7 +6,6 @@ package ArbreAbstrait;
 import java.util.*;
 
 public abstract class ArbreAbstrait {
-    public Stack<>
     public ArbreAbstrait() {
 
     }

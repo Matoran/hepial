@@ -8,7 +8,7 @@ public class Nombre extends Expression {
     // Creér à partir de la valeur du nombre
     public Nombre (Integer val, int lig) {
         super(lig);
-        this.valeur = val.intValue();
+        this.valeur = val;
     }
 
     // valeur de l’expression
