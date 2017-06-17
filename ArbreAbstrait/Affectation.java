@@ -5,9 +5,10 @@ package ArbreAbstrait;
  */
 public class Affectation extends Instruction{
     private Expression source;
-    private Expression dest;
+    private Idf dest;
 
-    public Affectation(Expression dest, Expression source) {
+    public Affectation(Idf dest, Expression source, int lig) {
+        super(lig);
         this.source = source;
         this.dest = dest;
     }

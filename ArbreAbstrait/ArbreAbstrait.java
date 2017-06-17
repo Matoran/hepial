@@ -5,8 +5,6 @@ package ArbreAbstrait;
  */
 import java.util.*;
 
-public abstract class ArbreAbstrait {
-    public ArbreAbstrait() {
+public interface ArbreAbstrait {
 
-    }
 }

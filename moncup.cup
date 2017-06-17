@@ -58,7 +58,7 @@ programme ::= entete declas DEBUT_PRG corps FIN_PRG
 :};
 entete ::= PROGRAMME IDENT
 {:
-    pileArbres.push(new Bloc());
+    pileArbres.push(new Bloc(0));
     tds.entreeBloc();
 :};
 declas ::= decla declas | decla;
@@ -88,7 +88,7 @@ decla_fonc ::=  decla_fonc_debut param decla_fonc_fin
               | decla_fonc_debut decla_fonc_fin;
 decla_fonc_debut ::= type IDENT:identifiant PARENTHESE_OUVRANTE
 {:
-        pileArbres.push(new Bloc());
+        pileArbres.push(new Bloc(lexer.getLine()));
         ligne = lexer.getLine();
         tds.entreeBloc();
         Entree e = new EntreeFonction(new Ident(identifiant));
@@ -115,14 +115,36 @@ lire ::= LIRE IDENT POINT_VIRGULE;
 ecrire ::= ECRIRE expr POINT_VIRGULE | ECRIRE CONSTANTE_CHAINE POINT_VIRGULE;
 affectation ::= acces EGAL expr POINT_VIRGULE
 {:
-Expression source = (Expression) (pileArbres.pop());
-Idf dest = (Idf)(pileArbres.pop());
-pileArbres.push(new Affectation(dest, source));
+    Expression source = (Expression) (pileArbres.pop());
+    Idf dest = (Idf)(pileArbres.pop());
+    pileArbres.push(new Affectation(dest, source, lexer.getLine()));
 :};
 retour ::= RETOURNE expr POINT_VIRGULE;
-condition ::= SI expr ALORS corps SINON corps FIN_SI;
-tant_que ::= TANT_QUE expr FAIRE corps FIN_TANT_QUE;
-pour ::= POUR IDENT ALLANT_DE expr A expr FAIRE corps FIN_POUR;
+condition ::= SI expr ALORS corps SINON corps FIN_SI
+{:
+    ArrayList<Instruction> sinon = new ArrayList<Instruction>();
+    sinon.add((Instruction)pileArbres.pop());
+    ArrayList<Instruction> alors = new ArrayList<Instruction>();
+    alors.add((Instruction)pileArbres.pop());
+    Expression ec = (Expression)pileArbres.pop();
+    pileArbres.push(new Condition(ec,alors,sinon,lexer.getLine()));
+:};
+tant_que ::= TANT_QUE expr FAIRE corps FIN_TANT_QUE
+{:
+    ArrayList<Instruction> faire = new ArrayList<Instruction>();
+    faire.add((Instruction)pileArbres.pop());
+    Expression ec = (Expression)pileArbres.pop();
+    //pileArbres.push(new TantQue);
+:};
+pour ::= POUR IDENT:identifiant ALLANT_DE expr A expr FAIRE corps FIN_POUR
+{:
+    ArrayList<Instruction> faire = new ArrayList<Instruction>();
+    faire.add((Instruction)pileArbres.pop());
+    Expression ecFin = (Expression)pileArbres.pop();
+    Expression ecDebut = (Expression)pileArbres.pop();
+    Idf id = new Idf(identifiant, lexer.getLine());
+    pileArbres.push(new Pour(id, ecDebut,ecFin,faire));
+:};
 expr ::= expr ope_bin:operateur expr
 {:
     Expression d = (Expression)pileArbres.pop();
