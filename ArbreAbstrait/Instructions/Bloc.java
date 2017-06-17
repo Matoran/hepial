@@ -1,7 +1,6 @@
-package ArbreAbstrait;
+package ArbreAbstrait.Instructions;
 
 import java.util.ArrayList;
-
 /**
  * Created by cyril on 6/16/17.
  */

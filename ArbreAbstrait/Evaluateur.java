@@ -1,5 +1,13 @@
 package ArbreAbstrait;
 
+import ArbreAbstrait.Arithmetiques.Addition;
+import ArbreAbstrait.Arithmetiques.Division;
+import ArbreAbstrait.Arithmetiques.Produit;
+import ArbreAbstrait.Arithmetiques.Soustraction;
+import ArbreAbstrait.Expressions.Idf;
+import ArbreAbstrait.Expressions.Nombre;
+import ArbreAbstrait.Instructions.*;
+import ArbreAbstrait.Relations.*;
 import TDS.Type;
 import TDS.TypeBooleen;
 
@@ -113,6 +121,16 @@ public class Evaluateur implements Visiteur {
         } // if
         c.getAlors().forEach(e -> e.accepter(this));
         c.getSinon().forEach(e -> e.accepter(this));
+        return null;
+    }
+
+    @Override
+    public Object visiter(Instruction instruction) {
+        return null;
+    }
+
+    @Override
+    public Object visiter(Linstr linstr) {
         return null;
     }
 

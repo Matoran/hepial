@@ -1,4 +1,4 @@
-programme hepial1
+ {programme hepial1
 
 entier x;
 constante booleen y = vrai;

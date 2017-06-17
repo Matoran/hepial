@@ -1,4 +1,7 @@
-package ArbreAbstrait;
+package ArbreAbstrait.Instructions;
+
+import ArbreAbstrait.Expressions.Expression;
+import ArbreAbstrait.Expressions.Idf;
 
 import java.util.ArrayList;
 

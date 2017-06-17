@@ -1,7 +1,7 @@
 package outils;
 
-import ArbreAbstrait.Affectation;
 import ArbreAbstrait.ArbreAbstrait;
+import ArbreAbstrait.Instructions.Affectation;
 
 /**
  * Created by matoran on 6/17/17.

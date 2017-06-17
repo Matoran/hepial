@@ -1,4 +1,4 @@
-package ArbreAbstrait;
+package ArbreAbstrait.Instructions;
 
 /**
  * Created by matoran on 6/17/17.

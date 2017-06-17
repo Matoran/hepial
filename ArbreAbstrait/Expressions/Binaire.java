@@ -1,4 +1,4 @@
-package ArbreAbstrait;
+package ArbreAbstrait.Expressions;
 
 /**
  * Created by cyril on 6/16/17.

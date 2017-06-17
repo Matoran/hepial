@@ -1,4 +1,6 @@
-package ArbreAbstrait;
+package ArbreAbstrait.Instructions;
+
+import ArbreAbstrait.Expressions.Idf;
 
 /**
  * Created by cyril on 6/16/17.

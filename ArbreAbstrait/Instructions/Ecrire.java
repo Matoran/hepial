@@ -1,9 +1,11 @@
-package ArbreAbstrait;
+package ArbreAbstrait.Instructions;
+
+import ArbreAbstrait.Expressions.Expression;
 
 /**
  * Created by cyril on 6/17/17.
  */
-public class Ecrire extends Instruction{
+public class Ecrire extends Instruction {
     private String texte;
     private Expression expr;
 

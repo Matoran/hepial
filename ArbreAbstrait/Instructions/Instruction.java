@@ -1,4 +1,7 @@
-package ArbreAbstrait;
+package ArbreAbstrait.Instructions;
+
+import ArbreAbstrait.ArbreAbstrait;
+import ArbreAbstrait.Visiteur;
 
 /**
  * Created by cyril on 6/16/17.

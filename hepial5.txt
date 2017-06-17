@@ -3,7 +3,7 @@ programme hepial5
 entier n;
 entier result;
 
-entier facto( entier n)
+entier facto( entier n )
     entier x;
 debutfonc
     x=0;

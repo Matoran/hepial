@@ -1,5 +1,6 @@
-package ArbreAbstrait;
+package ArbreAbstrait.Instructions;
 
+import ArbreAbstrait.Expressions.Expression;
 /**
  * Created by cyril on 6/16/17.
  */

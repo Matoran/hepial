@@ -1,6 +1,6 @@
 package TDS;
 
-import ArbreAbstrait.Idf;
+import ArbreAbstrait.Expressions.Idf;
 
 /**
  * Created by matoran on 6/12/17.

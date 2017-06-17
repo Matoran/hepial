@@ -1,11 +1,13 @@
-package ArbreAbstrait;
+package ArbreAbstrait.Instructions;
 
+import ArbreAbstrait.Expressions.Expression;
+import ArbreAbstrait.Expressions.Idf;
 import outils.AnalyseurSyntaxique;
 
 /**
  * Created by cyril on 6/16/17.
  */
-public class Affectation extends Instruction{
+public class Affectation extends Instruction {
     private Expression source;
     private Idf dest;
 

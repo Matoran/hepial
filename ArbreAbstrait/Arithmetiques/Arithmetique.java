@@ -1,4 +1,7 @@
-package ArbreAbstrait;
+package ArbreAbstrait.Arithmetiques;
+
+import ArbreAbstrait.Expressions.Binaire;
+import ArbreAbstrait.Expressions.Expression;
 
 /**
  * Created by cyril on 6/16/17.

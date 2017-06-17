@@ -1,5 +1,14 @@
 package ArbreAbstrait;
 
+import ArbreAbstrait.Arithmetiques.Addition;
+import ArbreAbstrait.Arithmetiques.Division;
+import ArbreAbstrait.Arithmetiques.Produit;
+import ArbreAbstrait.Arithmetiques.Soustraction;
+import ArbreAbstrait.Expressions.Idf;
+import ArbreAbstrait.Expressions.Nombre;
+import ArbreAbstrait.Instructions.*;
+import ArbreAbstrait.Relations.*;
+
 /**
  * Created by matoran on 6/17/17.
  */

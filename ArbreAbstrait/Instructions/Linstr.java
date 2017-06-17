@@ -1,7 +1,9 @@
-package ArbreAbstrait;
+package ArbreAbstrait.Instructions;
+
+import ArbreAbstrait.ArbreAbstrait;
+import ArbreAbstrait.Visiteur;
 
 import java.util.ArrayList;
-
 /**
  * Created by matoran on 6/17/17.
  */

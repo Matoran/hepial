@@ -1,7 +1,7 @@
-package ArbreAbstrait;
+package ArbreAbstrait.Expressions;
 
+import ArbreAbstrait.Visiteur;
 import TDS.Type;
-
 /**
  * Created by cyril on 6/16/17.
  */
