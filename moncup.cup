@@ -108,8 +108,15 @@ param ::= type IDENT:identifiant
 :}
  | param VIRGULE type IDENT;
 corps ::= instrTemp;
-instrTemp ::= instr instrTemp;
-instrTemp ::= {: :};
+instrTemp ::= instr instrTemp
+{:
+    System.out.println("aaaa");
+    Instruction i = (Instruction) pileArbres.pop();
+    System.out.println("wwww");
+    ((Linstr) pileArbres.peek()).add(i);
+    System.out.println("zzzzz");
+:};
+instrTemp ::= {: pileArbres.push(new Linstr()); :};
 instr ::= affectation | ecrire | lire | condition | retour | tant_que | pour;
 lire ::= LIRE IDENT POINT_VIRGULE;
 ecrire ::= ECRIRE expr POINT_VIRGULE
@@ -134,12 +141,10 @@ retour ::= RETOURNE expr POINT_VIRGULE
 :};
 condition ::= SI expr ALORS corps SINON corps FIN_SI
 {:
-    ArrayList<Instruction> sinon = new ArrayList<Instruction>();
-    sinon.add((Instruction)pileArbres.pop());
-    ArrayList<Instruction> alors = new ArrayList<Instruction>();
-    alors.add((Instruction)pileArbres.pop());
-    Expression ec = (Expression)pileArbres.pop();
-    pileArbres.push(new Condition(ec,alors,sinon,lexer.getLine()));
+    Linstr sinon = (Linstr) (pileArbres.pop());
+    Linstr alors = (Linstr) (pileArbres.pop());
+    Expression ec = (Expression) (pileArbres.pop());
+    pileArbres.push(new Condition(ec, alors, sinon,lexer.getLine()));
 :};
 tant_que ::= TANT_QUE expr FAIRE corps FIN_TANT_QUE
 {:
@@ -155,7 +160,7 @@ pour ::= POUR IDENT:identifiant ALLANT_DE expr A expr FAIRE corps FIN_POUR
     Expression ecFin = (Expression)pileArbres.pop();
     Expression ecDebut = (Expression)pileArbres.pop();
     Idf id = new Idf(identifiant, lexer.getLine());
-    pileArbres.push(new Pour(id, ecDebut,ecFin,faire));
+    pileArbres.push(new Pour(id, ecDebut,ecFin,faire, lexer.getLine()));
 :};
 expr ::= expr ope_bin:operateur expr
 {:

@@ -11,7 +11,8 @@ public class Pour extends Instruction {
     private Expression borneSup;
     private ArrayList<Instruction> instr;
 
-    public Pour(Idf id, Expression ecDebut, Expression ecFin, ArrayList<Instruction> faire){
+    public Pour(Idf id, Expression ecDebut, Expression ecFin, ArrayList<Instruction> faire, int lig) {
+        super(lig);
         instr = new ArrayList<Instruction>();
         idf = id;
         borneInf = ecDebut;

@@ -5,4 +5,8 @@ package ArbreAbstrait;
  */
 public class Appel extends Instruction {
     private Idf idf;
+
+    public Appel(int lig) {
+        super(lig);
+    }
 }

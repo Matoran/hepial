@@ -5,4 +5,8 @@ package ArbreAbstrait;
  */
 public class AppelQualifie extends Appel {
     private Expression receveur;
+
+    public AppelQualifie(int lig) {
+        super(lig);
+    }
 }

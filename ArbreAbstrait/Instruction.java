@@ -9,4 +9,10 @@ public class Instruction implements ArbreAbstrait {
     public Instruction(int lig){
         this.lig = lig;
     }
+
+    @Override
+    public Object accepter(Visiteur v) {
+        return v.visiter(this);
+    }
+
 }

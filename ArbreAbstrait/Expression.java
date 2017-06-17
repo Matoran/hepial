@@ -1,5 +1,7 @@
 package ArbreAbstrait;
 
+import TDS.Type;
+
 /**
  * Created by cyril on 6/16/17.
  */
@@ -9,4 +11,6 @@ public abstract class Expression implements ArbreAbstrait {
     public Expression(int lig) {
         ligne = lig;
     }
+
+    public abstract Type getType();
 }

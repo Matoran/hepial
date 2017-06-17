@@ -1,5 +1,8 @@
 package ArbreAbstrait;
 
+import TDS.Type;
+import TDS.TypeEntier;
+
 /**
  * Created by cyril on 6/16/17.
  */
@@ -19,5 +22,15 @@ public class Nombre extends Expression {
     @Override
     public String toString() {
         return ""+valeur;
+    }
+
+    @Override
+    public Object accepter(Visiteur v) {
+        return v.visiter(this);
+    }
+
+    @Override
+    public Type getType() {
+        return TypeEntier.getInstance();
     }
 }
