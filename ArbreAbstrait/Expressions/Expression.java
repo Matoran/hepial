@@ -10,6 +10,7 @@ public abstract class Expression implements ArbreAbstrait {
 
     public Expression(int lig) {
         ligne = lig;
+        System.out.println("création " + this.getClass().getSimpleName() + " " + lig);
     }
 
     public abstract Type getType();

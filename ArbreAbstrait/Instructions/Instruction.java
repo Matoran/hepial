@@ -11,6 +11,7 @@ public class Instruction implements ArbreAbstrait {
 
     public Instruction(int lig){
         this.lig = lig;
+        System.out.println("création " + this.getClass().getSimpleName() + " " + lig);
     }
 
     @Override
