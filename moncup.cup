@@ -10,6 +10,10 @@ import java_cup.runtime.*;
 import java.util.*;
 import java.io.*;
 import TDS.*;
+import ArbreAbstrait.Arithmetiques.*;
+import ArbreAbstrait.Instructions.*;
+import ArbreAbstrait.Relations.*;
+import ArbreAbstrait.Expressions.*;
 import ArbreAbstrait.*;
 
 
@@ -107,7 +111,12 @@ param ::= type IDENT:identifiant
         tds.ajouter(e, s);
 :}
  | param VIRGULE type IDENT;
-corps ::= instrTemp;
+corps ::= instrTemp
+{:
+    Linstr linstr = (Linstr) pileArbres.pop();
+
+    ((Bloc)pileArbres.peek()).add(linstr);
+:};
 instrTemp ::= instrTemp instr
 {:
     System.out.println(pileArbres);
@@ -116,7 +125,7 @@ instrTemp ::= instrTemp instr
     linstr.add(i);
     pileArbres.push(linstr);
 :};
-instrTemp ::= {: pileArbres.push(new Linstr()); System.out.println("temp"); :};
+instrTemp ::= {: pileArbres.push(new Linstr(lexer.getLine())); System.out.println("temp"); :};
 instr ::= affectation {: System.out.println("affectation"); :} |
 ecrire {: System.out.println("écrire"); :} |
 lire {: System.out.println("lire"); :} |
@@ -124,7 +133,11 @@ condition {: System.out.println("condition"); :} |
 retour {: System.out.println("retour"); :} |
 tant_que {: System.out.println("tant que"); :} |
 pour {: System.out.println("pour"); :};
-lire ::= LIRE IDENT POINT_VIRGULE;
+lire ::= LIRE IDENT POINT_VIRGULE
+{:
+    Idf id = (Idf)(pileArbres.pop());
+    pileArbres.push(new Lire(id,lexer.getLine()));
+:};
 ecrire ::= ECRIRE expr POINT_VIRGULE
         {:
             Expression exp = (Expression)(pileArbres.pop());
@@ -143,7 +156,7 @@ affectation ::= acces EGAL expr POINT_VIRGULE
 retour ::= RETOURNE expr POINT_VIRGULE
 {:
     Expression expr = (Expression) (pileArbres.pop());
-    pileArbres.push(expr);
+    pileArbres.push(new Retour(expr,lexer.getLine()));
 :};
 condition ::= SI expr ALORS corps SINON corps FIN_SI
 {:

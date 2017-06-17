@@ -7,8 +7,12 @@ import java.util.ArrayList;
 /**
  * Created by matoran on 6/17/17.
  */
-public class Linstr implements ArbreAbstrait {
+public class Linstr extends Instruction {
     private ArrayList<Instruction> linstr = new ArrayList<>();
+
+    public Linstr(int ligne) {
+        super(ligne);
+    }
 
     @Override
     public Object accepter(Visiteur v) {

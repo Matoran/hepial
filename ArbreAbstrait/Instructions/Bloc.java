@@ -5,14 +5,14 @@ import java.util.ArrayList;
  * Created by cyril on 6/16/17.
  */
 public class Bloc extends Instruction {
-    private ArrayList<Instruction> instr;
+    private Linstr linstr;
 
     public Bloc(int lig){
         super(lig);
-        instr = new ArrayList<Instruction>();
+        linstr = new Linstr(lig);
     }
 
     public void add(Instruction instruction) {
-        this.instr.add(instruction);
+        this.linstr.add(instruction);
     }
 }
