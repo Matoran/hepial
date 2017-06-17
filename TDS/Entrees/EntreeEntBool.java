@@ -1,4 +1,4 @@
-package TDS;
+package TDS.Entrees;
 
 /**
  * Created by matoran on 6/12/17.

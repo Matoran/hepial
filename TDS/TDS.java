@@ -1,6 +1,10 @@
 package TDS;
 
-import java.util.*;
+import TDS.Entrees.Entree;
+import TDS.Symboles.Symbole;
+
+import java.util.HashMap;
+import java.util.Stack;
 
 public class TDS {
     private Stack<Integer> pile;

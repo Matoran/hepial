@@ -8,8 +8,8 @@ import ArbreAbstrait.Expressions.Idf;
 import ArbreAbstrait.Expressions.Nombre;
 import ArbreAbstrait.Instructions.*;
 import ArbreAbstrait.Relations.*;
-import TDS.Type;
-import TDS.TypeBooleen;
+import TDS.Types.Type;
+import TDS.Types.TypeBooleen;
 
 /**
  * Created by matoran on 6/17/17.

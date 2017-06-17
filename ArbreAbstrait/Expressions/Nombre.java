@@ -1,8 +1,8 @@
 package ArbreAbstrait.Expressions;
 
 import ArbreAbstrait.Visiteur;
-import TDS.Type;
-import TDS.TypeEntier;
+import TDS.Types.Type;
+import TDS.Types.TypeEntier;
 /**
  * Created by cyril on 6/16/17.
  */

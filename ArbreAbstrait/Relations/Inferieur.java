@@ -2,8 +2,8 @@ package ArbreAbstrait.Relations;
 
 import ArbreAbstrait.Expressions.Expression;
 import ArbreAbstrait.Visiteur;
-import TDS.Type;
-import TDS.TypeBooleen;
+import TDS.Types.Type;
+import TDS.Types.TypeBooleen;
 /**
  * Created by cyril on 6/16/17.
  */

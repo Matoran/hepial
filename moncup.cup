@@ -10,11 +10,15 @@ import java_cup.runtime.*;
 import java.util.*;
 import java.io.*;
 import TDS.*;
+import TDS.Entrees.*;
+import TDS.Symboles.*;
+import TDS.Types.*;
+import ArbreAbstrait.*;
 import ArbreAbstrait.Arithmetiques.*;
 import ArbreAbstrait.Instructions.*;
 import ArbreAbstrait.Relations.*;
 import ArbreAbstrait.Expressions.*;
-import ArbreAbstrait.*;
+
 
 
 

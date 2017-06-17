@@ -1,4 +1,4 @@
-package TDS;
+package TDS.Types;
 
 /**
  * Created by matoran on 6/15/17.

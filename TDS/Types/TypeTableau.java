@@ -1,4 +1,4 @@
-package TDS;
+package TDS.Types;
 
 import ArbreAbstrait.Expressions.Idf;
 

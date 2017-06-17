@@ -1,4 +1,6 @@
-package TDS;
+package TDS.Symboles;
+
+import TDS.Types.Type;
 
 /**
  * Created by matoran on 6/12/17.
