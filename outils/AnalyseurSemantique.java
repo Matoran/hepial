@@ -77,11 +77,12 @@ public class AnalyseurSemantique implements Visiteur {
 
     private static String eb = "Expression booleen attendue";
     public Object visiter (Condition c) {
-        Object v = c.accepter(Evaluateur.getInstance());
+        System.out.println("Debut Condition");
+        Object v = c.getCondition().accepter(Evaluateur.getInstance());
         if (v != null)
             c.setCondition((Integer) v);
         else {
-            c.accepter(this);
+            c.getCondition().accepter(this);
             if (c.getCondition().getType() != TypeBooleen.getInstance())
                 System.out.println(c + eb);
         }
@@ -119,38 +120,55 @@ public class AnalyseurSemantique implements Visiteur {
         return null;
     }
 
+    public void verifierBinaire(Binaire b) {
+        b.gauche().accepter(this);
+        b.droit().accepter(this);
+        if(b.gauche().getType() == null || b.droit().getType() == null) {
+            System.out.println("operandes null " + b.droit() + " " + b.gauche());
+        }else if (b.gauche().getType() != b.droit().getType()) {
+            System.out.println("les opérandes n'ont pas le même type");
+        }
+    }
+
     @Override
     public Object visiter(Produit p) {
+        verifierBinaire(p);
         return null;
     }
 
     @Override
     public Object visiter(Division d) {
+        verifierBinaire(d);
         return null;
     }
 
     @Override
     public Object visiter(Egal e) {
+        verifierBinaire(e);
         return null;
     }
 
     @Override
     public Object visiter(Inferieur e) {
+        verifierBinaire(e);
         return null;
     }
 
     @Override
     public Object visiter(InfEgal e) {
+        verifierBinaire(e);
         return null;
     }
 
     @Override
     public Object visiter(Superieur e) {
+        verifierBinaire(e);
         return null;
     }
 
     @Override
     public Object visiter(SupEgal e) {
+        verifierBinaire(e);
         return null;
     }
 

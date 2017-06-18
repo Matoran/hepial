@@ -242,7 +242,7 @@ expr ::= expr ope_bin:operateur expr
 | ope_un expr | PARENTHESE_OUVRANTE expr PARENTHESE_FERMANTE | operande;
 acces ::= IDENT:identifiant
 {:
-    pileArbres.push(new Idf(identifiant, ligne)); 
+    pileArbres.push(new Idf(identifiant, ligne));
 :}
  | IDENT indexTemp;
 indexTemp ::= index indexTemp;
