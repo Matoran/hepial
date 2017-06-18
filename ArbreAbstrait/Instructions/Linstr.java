@@ -1,6 +1,5 @@
 package ArbreAbstrait.Instructions;
 
-import ArbreAbstrait.ArbreAbstrait;
 import ArbreAbstrait.Visiteur;
 
 import java.util.ArrayList;
@@ -21,5 +20,9 @@ public class Linstr extends Instruction {
 
     public void add(Instruction instruction) {
         linstr.add(instruction);
+    }
+
+    public ArrayList<Instruction> getLinstr() {
+        return linstr;
     }
 }

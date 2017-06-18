@@ -15,4 +15,8 @@ public class Bloc extends Instruction {
     public void add(Instruction instruction) {
         this.linstr.add(instruction);
     }
+
+    public ArrayList<Instruction> getLinstr() {
+        return linstr.getLinstr();
+    }
 }
