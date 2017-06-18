@@ -26,3 +26,7 @@ hs_err_pid*
 .idea/
 hepial.iml
 out/
+Lexer.java
+Lexer.java~
+parser.java
+sym.java
