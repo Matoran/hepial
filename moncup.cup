@@ -64,6 +64,7 @@ axiome ::= programme {:
     System.out.println(tds);
     AnalyseurSemantique.getInstance().analyse((Bloc)pileArbres.peek());
     Erreurs.afficher();
+    GenerateurByteCode.getInstance().generer(pileArbres.peek());
 :};
 programme ::= entete declas DEBUT_PRG corps FIN_PRG
 {:

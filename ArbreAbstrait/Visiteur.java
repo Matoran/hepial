@@ -47,4 +47,8 @@ public interface Visiteur {
     Object visiter(Instruction instruction);
 
     Object visiter(Linstr linstr);
+
+    Object visiter(Ecrire ecrire);
+
+    Object visiter(Lire lire);
 }

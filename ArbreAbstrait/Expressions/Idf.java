@@ -8,6 +8,7 @@ import TDS.Types.Type;
 public class Idf extends Expression {
     private String nom;
     private Type type;
+    private int pile = -1;
 
     public Idf(String nom, int lig){
         super(lig);
@@ -38,5 +39,13 @@ public class Idf extends Expression {
                 "nom='" + nom + '\'' +
                 ", type=" + type +
                 '}';
+    }
+
+    public int getPile() {
+        return pile;
+    }
+
+    public void setPile(int pile) {
+        this.pile = pile;
     }
 }

@@ -3,20 +3,18 @@ package outils;
 import ArbreAbstrait.ArbreAbstrait;
 import ArbreAbstrait.Arithmetiques.*;
 import ArbreAbstrait.Evaluateur;
-import ArbreAbstrait.Expressions.*;
+import ArbreAbstrait.Expressions.Idf;
+import ArbreAbstrait.Expressions.Nombre;
 import ArbreAbstrait.Instructions.*;
 import ArbreAbstrait.Relations.*;
 import ArbreAbstrait.Visiteur;
-import TDS.Entrees.Entree;
 import TDS.Entrees.EntreeEntBool;
 import TDS.Entrees.Ident;
 import TDS.Symboles.Symbole;
+import TDS.TDS;
 import TDS.Types.Type;
 import TDS.Types.TypeBooleen;
-import TDS.*;
 import TDS.Types.TypeEntier;
-
-import java.util.ArrayList;
 
 /**
  * Created by matoran on 6/17/17.
@@ -100,6 +98,16 @@ public class AnalyseurSemantique implements Visiteur {
         for (Instruction instruction : linstr.getLinstr()) {
             instruction.accepter(this);
         }
+        return null;
+    }
+
+    @Override
+    public Object visiter(Ecrire ecrire) {
+        return null;
+    }
+
+    @Override
+    public Object visiter(Lire lire) {
         return null;
     }
 

@@ -143,6 +143,16 @@ public class Evaluateur implements Visiteur {
     }
 
     @Override
+    public Object visiter(Ecrire ecrire) {
+        return null;
+    }
+
+    @Override
+    public Object visiter(Lire lire) {
+        return null;
+    }
+
+    @Override
     public Object visiter(Bloc b) {
         return null;
     }

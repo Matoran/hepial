@@ -1,5 +1,7 @@
 all: flex cup test compile	
 	java -classpath java-cup-11b.jar:. test hepial1
+	java -jar jasmin.jar jasmin.j
+	java Main
 compile: sym.java parser.java Lexer.java
 	javac -classpath java-cup-11b.jar:. sym.java
 	javac -classpath java-cup-11b.jar:. parser.java
