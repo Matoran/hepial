@@ -18,6 +18,7 @@ import ArbreAbstrait.Arithmetiques.*;
 import ArbreAbstrait.Instructions.*;
 import ArbreAbstrait.Relations.*;
 import ArbreAbstrait.Expressions.*;
+import outils.*;
 
 
 
@@ -61,6 +62,8 @@ precedence right TILDE, NON;
 //-------------------Regles de grammaire--------------------------------
 axiome ::= programme {:
     System.out.println(tds);
+    AnalyseurSemantique.getInstance().analyse((Bloc)pileArbres.peek());
+    Erreurs.afficher();
 :};
 programme ::= entete declas DEBUT_PRG corps FIN_PRG
 {:

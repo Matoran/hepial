@@ -8,8 +8,6 @@ import ArbreAbstrait.Expressions.Idf;
 import ArbreAbstrait.Expressions.Nombre;
 import ArbreAbstrait.Instructions.*;
 import ArbreAbstrait.Relations.*;
-import TDS.Types.Type;
-import TDS.Types.TypeBooleen;
 
 /**
  * Created by matoran on 6/17/17.
@@ -75,6 +73,13 @@ public class Evaluateur implements Visiteur {
 
     @Override
     public Object visiter(Egal e) {
+        Object valG = e.gauche().accepter(this);
+        if (valG == null) return null;
+        Object valD = e.droit().accepter(this);
+        if (valD == null) return null;
+        if (valD != valG) {
+
+        }
         return null;
     }
 
@@ -112,15 +117,16 @@ public class Evaluateur implements Visiteur {
     @Override
     public Object visiter(Condition c) {
         Object v = c.getCondition().accepter(this);
-        if (v != null)
-            c.setValeurCondition((Integer) v);
-        else {
+        if (v != null) {
+            System.out.println("v: " + v);
+            //c.setValeurCondition((Integer) v);
+        } else {
             c.getCondition().accepter(this);
-            if (c.getCondition().type() != TypeBooleen.getInstance())
-                erreur(c, eb);
+            // if (c.getCondition().type() != TypeBooleen.getInstance())
+            // Erreurs.ajouter(c, eb);
         } // if
-        c.getAlors().forEach(e -> e.accepter(this));
-        c.getSinon().forEach(e -> e.accepter(this));
+        // c.getAlors().forEach(e -> e.accepter(this));
+        //c.getSinon().forEach(e -> e.accepter(this));
         return null;
     }
 
@@ -142,9 +148,20 @@ public class Evaluateur implements Visiteur {
     private static String ncf = "Source et dest. non conformes";
 
     @Override
+    /*
+    public void controler() {
+source().controler();
+Type tg = source().getType();
+destination().controler();
+Type td = destination().getType();
+if (tg.estConforme(td))
+type = tg;
+else
+...
+     */
     public Object visiter(Affectation a) {
         a.getDest().accepter(this);
-        Type typeDest = a.getDest().type();
+       /* Type typeDest = a.getDest().type();
         Object v = a.getSource().accepter(Evaluateur.getInstance());
         if (v != null)
             a.setSource(new Nombre((Integer) v, ligne()));
@@ -153,7 +170,7 @@ public class Evaluateur implements Visiteur {
         if (!(typeSource.estConforme(typeDest)))
             erreur(a, ncf);
         else
-            a.setType(typeDest);
+            a.setType(typeDest);*/
         return null;
     }
 

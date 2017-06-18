@@ -2,7 +2,6 @@ package ArbreAbstrait.Instructions;
 
 import ArbreAbstrait.Expressions.Expression;
 import ArbreAbstrait.Expressions.Idf;
-import outils.AnalyseurSyntaxique;
 
 /**
  * Created by cyril on 6/16/17.
@@ -15,10 +14,6 @@ public class Affectation extends Instruction {
         super(lig);
         this.source = source;
         this.dest = dest;
-    }
-
-    public void controler() {
-        AnalyseurSyntaxique.getInstance().controler(this);
     }
 
     public Expression getSource() {
