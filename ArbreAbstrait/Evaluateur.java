@@ -29,6 +29,8 @@ public class Evaluateur implements Visiteur {
 
     @Override
     public Object visiter(Addition a) {
+        System.out.println("debut addition");
+        System.out.println(a);
         Object valG = a.gauche().accepter(this);
         if (valG == null) return null;
         Object valD = a.droit().accepter(this);

@@ -1,6 +1,7 @@
 package ArbreAbstrait.Instructions;
 
 import ArbreAbstrait.Expressions.Idf;
+import ArbreAbstrait.Visiteur;
 
 /**
  * Created by matoran on 6/17/17.
@@ -13,5 +14,9 @@ public class Lire extends Instruction {
         identifiant = id;
     }
 
+    @Override
+    public Object accepter(Visiteur v) {
+        return v.visiter(this);
+    }
 
 }

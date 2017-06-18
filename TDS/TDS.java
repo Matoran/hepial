@@ -74,6 +74,11 @@ public class TDS {
         return s;
     }
 
+    public Symbole getSymbole(Entree entree){
+        Stack<Association> stack = dico.get(entree);
+        return stack.get(0).getSymbole();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

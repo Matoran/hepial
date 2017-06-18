@@ -2,6 +2,8 @@ package ArbreAbstrait.Expressions;
 
 import ArbreAbstrait.ArbreAbstrait;
 import TDS.Types.Type;
+import outils.AnalyseurSemantique;
+
 /**
  * Created by cyril on 6/16/17.
  */
@@ -14,4 +16,5 @@ public abstract class Expression implements ArbreAbstrait {
     }
 
     public abstract Type getType();
+
 }

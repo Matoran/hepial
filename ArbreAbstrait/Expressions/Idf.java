@@ -31,4 +31,12 @@ public class Idf extends Expression {
     public void setType(Type type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "Idf{" +
+                "nom='" + nom + '\'' +
+                ", type=" + type +
+                '}';
+    }
 }

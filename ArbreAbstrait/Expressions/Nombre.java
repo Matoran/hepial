@@ -8,6 +8,8 @@ import TDS.Types.TypeEntier;
  */
 public class Nombre extends Expression {
     private int valeur;
+    private Type type;
+
     // Creér à partir de la valeur du nombre
     public Nombre (Integer val, int lig) {
         super(lig);
@@ -30,7 +32,11 @@ public class Nombre extends Expression {
     }
 
     @Override
-    public Type getType() {
-        return TypeEntier.getInstance();
+    public Type getType(){
+        return this.type;
+    }
+
+    public void setType(Type type){
+        this.type = type;
     }
 }

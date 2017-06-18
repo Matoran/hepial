@@ -18,4 +18,17 @@ public abstract class Entree {
     public String toString() {
         return identifiant.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof Entree))
+            return false;
+        Entree entree = (Entree)o;
+        return identifiant.getIdent().equals(entree.getIdent().getIdent());
+    }
+
+    @Override
+    public int hashCode() {
+        return identifiant.getIdent().hashCode();
+    }
 }

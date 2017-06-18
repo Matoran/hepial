@@ -248,8 +248,8 @@ acces ::= IDENT:identifiant
 indexTemp ::= index indexTemp;
 index ::= CROCHET_OUVRANT expr CROCHET_FERMANT;
 operande ::= acces | appel_fct | CONSTANTE_ENT:val {: pileArbres.push(new Nombre(val,lexer.getLine()));  :}
-            | VRAI {: pileArbres.push(new Nombre(1, lexer.getLine()));  :}
-            | FAUX {: pileArbres.push(new Nombre(0, lexer.getLine()));  :};
+            | VRAI {: pileArbres.push(new Booleen(true, lexer.getLine()));  :}
+            | FAUX {: pileArbres.push(new Booleen(false, lexer.getLine()));  :};
 ope_bin ::= PLUS {: RESULT = "+"; :}
             | MOINS {: RESULT = "-"; :}
             | FOIS {: RESULT = "*"; :}

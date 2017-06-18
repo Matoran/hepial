@@ -14,4 +14,12 @@ public class Ident {
     public String toString() {
         return identifiant;
     }
+
+    public String getIdent() {
+        return identifiant;
+    }
+
+    public void setIdent(String identifiant) {
+        this.identifiant = identifiant;
+    }
 }

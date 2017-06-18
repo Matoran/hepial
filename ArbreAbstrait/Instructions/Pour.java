@@ -2,6 +2,7 @@ package ArbreAbstrait.Instructions;
 
 import ArbreAbstrait.Expressions.Expression;
 import ArbreAbstrait.Expressions.Idf;
+import ArbreAbstrait.Visiteur;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,11 @@ public class Pour extends Instruction {
         borneInf = ecDebut;
         borneSup = ecFin;
         instr = faire;
+    }
+
+    @Override
+    public Object accepter(Visiteur v) {
+        return v.visiter(this);
     }
 
 }
