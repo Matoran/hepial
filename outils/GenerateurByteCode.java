@@ -60,6 +60,17 @@ public class GenerateurByteCode implements Visiteur {
         b.getLinstr().accepter(this);
         cible.append("return\n");
         cible.append(".end method\n");
+        cible.append(".method public static read()I\n");
+        cible.append(".limit locals 10\n");
+        cible.append(".limit stack 10\n");
+        cible.append("new java/util/Scanner\n");
+        cible.append("dup\n");
+        cible.append("getstatic java/lang/System/in Ljava/io/InputStream;\n");
+        cible.append("invokespecial java/util/Scanner/<init>(Ljava/io/InputStream;)V\n");
+        cible.append("invokevirtual java/util/Scanner/nextInt()I\n");
+        cible.append("ireturn\n");
+
+ cible.append(".end method\n");
         return null;
     }
 
@@ -183,6 +194,8 @@ public class GenerateurByteCode implements Visiteur {
 
     @Override
     public Object visiter(Lire lire) {
+        cible.append("invokestatic Main.read(I)I\n");
+        cible.append("istore ").append(indexEcrire);
         return null;
     }
 }
