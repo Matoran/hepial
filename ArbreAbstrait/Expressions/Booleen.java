@@ -5,7 +5,10 @@ import TDS.Types.Type;
 import TDS.Types.TypeBooleen;
 
 /**
- * Created by cyril on 6/18/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Booleen
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class Booleen extends Expression {
     private boolean val;

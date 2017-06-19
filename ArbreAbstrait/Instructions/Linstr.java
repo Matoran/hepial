@@ -4,7 +4,10 @@ import ArbreAbstrait.Visiteur;
 
 import java.util.ArrayList;
 /**
- * Created by matoran on 6/17/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Linstr
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class Linstr extends Instruction {
     private ArrayList<Instruction> linstr = new ArrayList<>();

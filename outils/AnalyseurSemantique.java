@@ -3,6 +3,7 @@ package outils;
 import ArbreAbstrait.ArbreAbstrait;
 import ArbreAbstrait.Arithmetiques.*;
 import ArbreAbstrait.Evaluateur;
+import ArbreAbstrait.Expressions.Binaire;
 import ArbreAbstrait.Expressions.Idf;
 import ArbreAbstrait.Expressions.Nombre;
 import ArbreAbstrait.Instructions.*;
@@ -17,7 +18,10 @@ import TDS.Types.TypeBooleen;
 import TDS.Types.TypeEntier;
 
 /**
- * Created by matoran on 6/17/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: AnalyseurSemantique
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class AnalyseurSemantique implements Visiteur {
     private static AnalyseurSemantique ourInstance = new AnalyseurSemantique();

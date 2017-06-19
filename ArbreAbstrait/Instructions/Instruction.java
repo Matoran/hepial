@@ -4,7 +4,10 @@ import ArbreAbstrait.ArbreAbstrait;
 import ArbreAbstrait.Visiteur;
 
 /**
- * Created by cyril on 6/16/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Instructin
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public abstract class Instruction implements ArbreAbstrait {
     private int lig;

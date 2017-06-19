@@ -1,3 +1,9 @@
+/**
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: TDS
+ * Language: Java
+ * Date : semestre printemps 2017
+ */
 package TDS;
 
 import TDS.Entrees.Entree;

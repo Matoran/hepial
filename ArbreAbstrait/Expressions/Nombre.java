@@ -4,7 +4,10 @@ import ArbreAbstrait.Visiteur;
 import TDS.Types.Type;
 import TDS.Types.TypeEntier;
 /**
- * Created by cyril on 6/16/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Nombre
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class Nombre extends Expression {
     private int valeur;

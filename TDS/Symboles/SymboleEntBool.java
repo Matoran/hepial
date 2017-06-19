@@ -3,7 +3,10 @@ package TDS.Symboles;
 import TDS.Types.Type;
 
 /**
- * Created by matoran on 6/12/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: SymboleEntBool
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class SymboleEntBool extends SymboleVariable {
     public SymboleEntBool(int ligne, Type t) {

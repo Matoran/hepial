@@ -5,7 +5,10 @@ import ArbreAbstrait.Expressions.Expression;
 import TDS.Types.Type;
 
 /**
- * Created by cyril on 6/16/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Arithmetique
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public abstract class Arithmetique extends Binaire {
     private Type type;

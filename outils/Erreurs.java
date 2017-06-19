@@ -6,7 +6,10 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 
 /**
- * Created by matoran on 6/17/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Erreurs
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class Erreurs {
     private static ArrayList<Pair<ArbreAbstrait, String>> erreurs = new ArrayList<>();

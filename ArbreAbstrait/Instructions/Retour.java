@@ -5,7 +5,10 @@ import ArbreAbstrait.Expressions.Expression;
 import ArbreAbstrait.Visiteur;
 
 /**
- * Created by cyril on 6/17/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Retour
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class Retour extends Instruction {
     private Expression expression;

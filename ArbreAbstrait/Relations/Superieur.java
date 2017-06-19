@@ -5,7 +5,10 @@ import ArbreAbstrait.Visiteur;
 import TDS.Types.Type;
 import TDS.Types.TypeBooleen;
 /**
- * Created by cyril on 6/16/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Superieur
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class Superieur extends Relation {
     public Superieur(Expression g, Expression d, int lig) {

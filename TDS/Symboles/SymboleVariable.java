@@ -3,7 +3,10 @@ package TDS.Symboles;
 import TDS.Types.Type;
 
 /**
- * Created by matoran on 6/12/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: SymboleVariable
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class SymboleVariable extends Symbole {
     protected SymboleVariable(int ligne, Type t) {

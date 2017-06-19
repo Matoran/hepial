@@ -1,7 +1,10 @@
 package TDS.Types;
 
 /**
- * Created by matoran on 6/12/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Type
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public abstract class Type {
     public abstract boolean estConforme(Type other);

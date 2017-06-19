@@ -7,17 +7,19 @@ import ArbreAbstrait.Visiteur;
 import java.util.ArrayList;
 
 /**
- * Created by cyril on 6/16/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Pour
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class Pour extends Instruction {
     private Idf idf;
     private Expression borneInf;
     private Expression borneSup;
-    private ArrayList<Instruction> instr;
+    private Linstr instr;
 
-    public Pour(Idf id, Expression ecDebut, Expression ecFin, ArrayList<Instruction> faire, int lig) {
+    public Pour(Idf id, Expression ecDebut, Expression ecFin, Linstr faire, int lig) {
         super(lig);
-        instr = new ArrayList<Instruction>();
         idf = id;
         borneInf = ecDebut;
         borneSup = ecFin;

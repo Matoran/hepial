@@ -1,7 +1,10 @@
 package TDS.Types;
 
 /**
- * Created by matoran on 6/15/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: TypeEntier
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class TypeEntier extends Type {
     private static TypeEntier ourInstance = new TypeEntier();

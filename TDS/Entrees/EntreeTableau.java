@@ -1,7 +1,10 @@
 package TDS.Entrees;
 
 /**
- * Created by matoran on 6/12/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: EntreeTableau
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class EntreeTableau extends EntreeVariable {
     protected EntreeTableau(Ident ident) {

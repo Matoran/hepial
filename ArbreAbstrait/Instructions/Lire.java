@@ -4,7 +4,10 @@ import ArbreAbstrait.Expressions.Idf;
 import ArbreAbstrait.Visiteur;
 
 /**
- * Created by matoran on 6/17/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Lire
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class Lire extends Instruction {
     private Idf identifiant;

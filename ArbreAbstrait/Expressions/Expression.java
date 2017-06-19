@@ -5,7 +5,10 @@ import TDS.Types.Type;
 import outils.AnalyseurSemantique;
 
 /**
- * Created by cyril on 6/16/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Expression
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public abstract class Expression implements ArbreAbstrait {
     private int ligne;

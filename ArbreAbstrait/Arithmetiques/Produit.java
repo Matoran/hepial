@@ -5,7 +5,10 @@ import ArbreAbstrait.Visiteur;
 import TDS.Types.Type;
 import TDS.Types.TypeEntier;
 /**
- * Created by cyril on 6/16/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Produit
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class Produit extends Arithmetique {
     public Produit(Expression g, Expression d, int lig) {

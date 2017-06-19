@@ -1,7 +1,10 @@
 package ArbreAbstrait;
 
 /**
- * Created by cyril on 6/16/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: ArbreAbstrait
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 
 public interface ArbreAbstrait {

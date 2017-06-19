@@ -3,7 +3,10 @@ package ArbreAbstrait.Expressions;
 import ArbreAbstrait.Visiteur;
 import TDS.Types.Type;
 /**
- * Created by cyril on 6/16/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Idf
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class Idf extends Expression {
     private String nom;

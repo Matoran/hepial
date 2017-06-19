@@ -189,15 +189,13 @@ condition ::= SI expr ALORS corps SINON corps FIN_SI
 :};
 tant_que ::= TANT_QUE expr FAIRE corps FIN_TANT_QUE
 {:
-    ArrayList<Instruction> faire = new ArrayList<Instruction>();
-    faire.add((Instruction)pileArbres.pop());
+    Linstr faire = (Linstr) (pileArbres.pop());
     Expression ec = (Expression)pileArbres.pop();
-    //pileArbres.push(new TantQue); 
+    //pileArbres.push(new TantQue(ec,faire));
 :};
 pour ::= POUR IDENT:identifiant ALLANT_DE expr A expr FAIRE corps FIN_POUR
 {:
-    ArrayList<Instruction> faire = new ArrayList<Instruction>();
-    faire.add((Instruction)pileArbres.pop());
+    Linstr faire = (Linstr) (pileArbres.pop());
     Expression ecFin = (Expression)pileArbres.pop();
     Expression ecDebut = (Expression)pileArbres.pop();
     Idf id = new Idf(identifiant, lexer.getLine());

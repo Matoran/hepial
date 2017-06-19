@@ -16,7 +16,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Created by matoran on 6/17/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: GenerateurByteCode
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class GenerateurByteCode implements Visiteur {
     private static StringBuilder cible = new StringBuilder();
@@ -156,7 +159,6 @@ public class GenerateurByteCode implements Visiteur {
 
     @Override
     public Object visiter(Idf i) {
-        System.out.println("Idf");
         if (i.getPile() == -1) {
             i.setPile(pile++);
         } else {
@@ -187,15 +189,14 @@ public class GenerateurByteCode implements Visiteur {
     public Object visiter(Ecrire ecrire) {
         cible.append("getstatic java/lang/System/out Ljava/io/PrintStream;\n");
         cible.append("iload ").append(indexEcrire).append("\n");
-        //; invoke println
         cible.append("invokevirtual java/io/PrintStream/println(I)V\n");
         return null;
     }
 
     @Override
     public Object visiter(Lire lire) {
-        cible.append("invokestatic Main.read(I)I\n");
-        cible.append("istore ").append(indexEcrire);
+        cible.append("invokestatic Main.read()I\n");
+        cible.append("istore ").append(indexEcrire).append("\n");
         return null;
     }
 }

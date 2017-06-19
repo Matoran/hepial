@@ -1,7 +1,10 @@
 package ArbreAbstrait.Expressions;
 
 /**
- * Created by cyril on 6/16/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Binaire
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public abstract class Binaire extends Expression {
     protected Expression operandeGauche; // opérande gauche

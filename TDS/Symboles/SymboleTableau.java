@@ -3,7 +3,10 @@ package TDS.Symboles;
 import TDS.Types.Type;
 
 /**
- * Created by matoran on 6/12/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: SymboleTableau
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public class SymboleTableau extends SymboleVariable {
     protected SymboleTableau(int ligne, Type t) {

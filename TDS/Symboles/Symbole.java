@@ -3,7 +3,10 @@ package TDS.Symboles;
 import TDS.Types.Type;
 
 /**
- * Created by matoran on 6/12/17.
+ * @authors LOPES Marco, ISELI Cyril
+ * Purpose: Symbole
+ * Language: Java
+ * Date : semestre printemps 2017
  */
 public abstract class Symbole {
     private int ligne;
